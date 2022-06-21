@@ -1,6 +1,24 @@
-import React from "react";
+import React, {useState} from "react";
 
-function CoffeeCard({ id, name, origin, roaster, price, image }) {
+function CoffeeCard({ id, name, origin, roaster, price, image, stock }) {
+    // const [stock, setStock] = useState({ stock })
+    
+    function handleClick() {
+        alert ('Testing')
+        let updatedStock = stock - 1
+        fetch(`http://localhost:9292/coffees/${id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                stock: updatedStock
+            }),
+        })
+            .then((r) => r.json())
+            .then((data) => console.log(data))
+    }
+
   return (
     <div className="card">
       <h2>{name}</h2>
@@ -13,6 +31,7 @@ function CoffeeCard({ id, name, origin, roaster, price, image }) {
             <h2>{origin}</h2>
             <h1>{roaster}</h1>
             <h3>${price}</h3>
+            <button className="addToCart" onClick={handleClick} > Reserve </button>
           </div>
         </div>
       </div>
