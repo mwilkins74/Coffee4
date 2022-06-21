@@ -31,7 +31,7 @@ function CoffeeCard({ id, name, origin, roaster, price, image, stock }) {
             <h2>{origin}</h2>
             <h1>{roaster}</h1>
             <h3>${price}</h3>
-            <button className="addToCart" onClick={handleClick} > Reserve </button>
+            <button className="addToCart" onClick={() => handleClick(id)} > Reserve </button>
           </div>
         </div>
       </div>
