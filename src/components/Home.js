@@ -11,6 +11,7 @@ function Home({ coffees }) {
         roaster={coffee.roaster}
         price={coffee.price}
         image={coffee.image_url}
+        stock={coffee.stock}
     />
 
     ))
