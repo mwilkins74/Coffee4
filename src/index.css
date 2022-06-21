@@ -1,16 +1,24 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: lightblue
+  background: #8cd9d2
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.media-object {
+    height: 100px;
+}
+
+.App {
+  text-align: center;
 }
 
 .logo {
@@ -19,34 +27,126 @@ code {
   margin-right: auto;
   width: 50%;
 }
-/* 
+
+.App-header {
+  background-color: white;
+  min-height: 1vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  padding: 10px;
+  height: 60px;
+}
+
 .card {
   text-align: center;
-  border: grey solid 1px;
+  border: #f55ca6 solid 3px;
   padding: 1rem;
-  width: 15rem;
+  width: 20rem;
   height: 25rem;
   display: inline-grid;
   margin: 1rem 2rem;
-  box-shadow: 3px 4px #f55ca6;
-} */
+  background: transparent;
+  transition: transform .2s;
+}
 
-.flip-card {
+.images {
+  position: relative;
+  bottom: 50px;
+  left: 15px;
+  height: 300px;
+  width: auto;
+}
+
+.search-bar {
+  overflow: hidden;
+  background-color: white;
+  width: 400px;
+  height: 40px;
+  position: fixed;
+  top: 10%;
+  left: 38%;
+}
+
+.search-icon button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.like-btn {
+  width: 40;
+  height: 40;
+  background-color: #ff0000;
+  position: relative;
+  bottom: 50px;
+  left: 150px;
+}
+
+.un-like-btn{
+  width: 40;
+  height: 40;
+  background-color: black;
+  position: relative;
+  bottom: 50px;
+  left: 150px;
+}
+
+.un-like-btn {
+  width: 40;
+  height: 40;
+  transform: rotate(180deg);
+}
+
+.likes {
+  position: relative;
+  top: 20px;
+}
+
+.likes-count {
+  position: relative;
+  bottom: 10px;
+}
+
+.form {
+  display: inline-block;
   text-align: center;
-  border: grey solid 1px;
-  padding: 1rem;
-  width: 15rem;
-  height: 25rem;
-  display: inline-grid;
-  margin: 1rem 2rem;
-  /* box-shadow: 3px 4px #f55ca6; */
+  overflow-wrap: break-word;
+  width: 50em;
+  margin: 50px;
+}
+
+.label {
+  margin-left: 10px;
+}
+
+.title {
+  white-space: nowrap;
+  width: 350px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: black;
+  max-width: 50ch;
+}
+
+/* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+.flip-card {
   background-color: transparent;
   width: 300px;
   height: 200px;
-  border: 3px solid #f55ca6;
-  perspective: 1000px;
+  /* border: 1px solid #f1f1f1; */
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
 }
 
+/* This container is needed to position the front and back side */
 .flip-card-inner {
   position: relative;
   width: 100%;
@@ -56,10 +156,12 @@ code {
   transform-style: preserve-3d;
 }
 
+/* Do an horizontal flip when you move the mouse over the flip box container */
 .flip-card:hover .flip-card-inner {
   transform: rotateY(180deg);
 }
 
+/* Position the front and back side */
 .flip-card-front, .flip-card-back {
   position: absolute;
   width: 100%;
@@ -68,14 +170,45 @@ code {
   backface-visibility: hidden;
 }
 
+/* Style the front side (fallback if image is missing) */
 .flip-card-front {
-  background-color: #8cd9d2;
+  /* background-color: #bbb; */
   color: black;
 }
 
+/* Style the back side */
 .flip-card-back {
-  background-color: #8cd9d2;
-  color: white;
+  background-color: lightblue;
+  color: black;
   transform: rotateY(180deg);
+}
+
+.invalid {
+  color: red;
+}
+
+#mynavbar {
+  position: absolute;
+  right: 140px;
+  text-align: center;
+}
+
+#toggler {
+  position: absolute;
+  left:110px;
+  top: 220px;
+  background-color: lightgrey;
+}
+
+#nav-link {
+  width: 60;
+  height: 60;
+  background-color: #ff0000;
+  margin-right: 10px;
+}
+
+.option-button {
+    height:60%;
+    justify-content: center;
 }
 

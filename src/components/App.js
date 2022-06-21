@@ -5,7 +5,7 @@ function App() {
   const [coffees, setCoffees] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:9292/")
+    fetch("http://localhost:9292/coffees")
       .then((response) => response.json())
       .then((data) => setCoffees(data));
   }, []);
@@ -13,13 +13,17 @@ function App() {
 
   return (
     <div>
-      <img
-        className="logo"
-        width="250"
-        alt="Black Coffee Co. Logo"
-        src="https://user-images.githubusercontent.com/102488171/174443127-2ddbd44d-c64c-4023-80e4-31436b5b64e3.png"
-      />
-      <Home coffees={coffees} />
+      <div className="header">
+        <img
+          className="logo"
+          width="250"
+          alt="Black Coffee Co. Logo"
+          src="https://user-images.githubusercontent.com/102488171/174443127-2ddbd44d-c64c-4023-80e4-31436b5b64e3.png"
+        />
+      </div>
+      <div className="App">
+        <Home coffees={coffees} />
+      </div>
     </div>
   );
 }

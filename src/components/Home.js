@@ -10,13 +10,13 @@ function Home({ coffees }) {
         origin={coffee.origin_country}
         roaster={coffee.roaster}
         price={coffee.price}
-        image={coffee.image}
+        image={coffee.image_url}
     />
 
     ))
 
   return (
-      <div>{coffeeCards}</div>
+      <div id="coffee-collection">{coffeeCards}</div>
       
   )
 }
