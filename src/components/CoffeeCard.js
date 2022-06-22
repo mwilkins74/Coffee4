@@ -1,11 +1,15 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 
 function CoffeeCard({ id, name, origin, roaster, price, image, stock }) {
-    // const [stock, setStock] = useState({ stock })
+    const [newStock, setNewStock] = useState(false)
+
+
+    const [updatedStock, setStock] = useState(stock)
     
+    console.log(price + "coffee card")
     function handleClick() {
         // alert ('Testing')
-        let updatedStock = stock - 1
+        setStock(updatedStock - 1)
         fetch(`http://localhost:9292/coffees/${id}`, {
             method: "PATCH",
             headers: {
@@ -16,8 +20,20 @@ function CoffeeCard({ id, name, origin, roaster, price, image, stock }) {
             }),
         })
             .then((r) => r.json())
-            .then((data) => console.log(data))
+            .then(data => {
+              if (data.stock === 0){
+                setNewStock(!newStock)
+              }
+            })
+            
     }
+
+    useEffect(() => {
+      fetch(`http://localhost:9292/coffees/${id}`, {
+          method: "DELETE",
+      })
+  }, [newStock])
+ 
 
   return (
     <div className="card">
