@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Home from "./Home";
+// import Search from "./Search";
+// import { Switch, Routes, Route, Link } from "react-router-dom";
+
 
 function App() {
   const [coffees, setCoffees] = useState([]);
+  // const [search, setSearch] = useState("");
+  // const [cart, setCart] = useState([])
 
   useEffect(() => {
     fetch("http://localhost:9292/coffees")
@@ -12,7 +17,11 @@ function App() {
         //console.log(data)
       });
   }, []);
-    // console.log(coffees);
+  
+  // const displayCoffees = coffees.filter((coffee) => {
+  //   return coffee.name.toLowerCase().includes(search.toLowerCase())
+  // })
+  
 
   return (
     <div>
@@ -25,7 +34,8 @@ function App() {
         />
       </div>
       <div className="App">
-        <Home coffees={coffees} />
+        {/* <Search search={search} onNewSearch={setSearch} /> */}
+        <Home coffees={coffees} setCoffees={setCoffees} />
       </div>
     </div>
   );

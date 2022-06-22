@@ -1,39 +1,54 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 
-function CoffeeCard({ id, name, origin, roaster, price, image, stock }) {
-    const [newStock, setNewStock] = useState(false)
+function CoffeeCard({
+  id,
+  name,
+  origin,
+  roaster,
+  price,
+  image,
+  stock,
+  setCoffees,
+}) {
+  const [newStock, setNewStock] = useState(false);
+  const [updatedStock, setStock] = useState(stock);
+  const [isDeleted, setIsDeleted] = useState(false)
 
-
-    const [updatedStock, setStock] = useState(stock)
-    
-    console.log(price + "coffee card")
-    function handleClick() {
-        // alert ('Testing')
-        setStock(updatedStock - 1)
-        fetch(`http://localhost:9292/coffees/${id}`, {
-            method: "PATCH",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                stock: updatedStock
-            }),
-        })
-            .then((r) => r.json())
-            .then(data => {
-              if (data.stock === 0){
-                setNewStock(!newStock)
-              }
-            })
-            
-    }
-
-    useEffect(() => {
+  console.log(price + "coffee card");
+  function handleClick() {
+    if (updatedStock != 0) {
+      setStock(updatedStock - 1);
       fetch(`http://localhost:9292/coffees/${id}`, {
-          method: "DELETE",
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          stock: updatedStock,
+        }),
       })
-  }, [newStock])
- 
+        .then((r) => r.json())
+        .then((data) => {
+          if (data.stock === 0) {
+            setNewStock(!newStock);
+          }
+        });
+    }
+    else {
+      fetch(`http://localhost:9292/coffees/${id}`, {
+        method: "DELETE",
+      })
+        .then((r) => r.json())
+        .then((data) => setCoffees(data))
+        .then(setIsDeleted(!isDeleted));
+    } 
+  }
+
+  //   useEffect(() => {
+  //     fetch(`http://localhost:9292/coffees/${id}`, {
+  //         method: "DELETE",
+  //     })
+  // }, [newStock])
 
   return (
     <div className="card">

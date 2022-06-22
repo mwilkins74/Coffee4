@@ -1,9 +1,9 @@
 import React from 'react'
 import CoffeeCard from "./CoffeeCard"
 
-function Home({ coffees }) {
-    const coffeeCards = coffees.map((coffee) => 
-    (<CoffeeCard
+function Home({ coffees, setCoffees }) {
+    const coffeeCards = coffees.map((coffee) => (
+      <CoffeeCard
         key={coffee.id}
         id={coffee.id}
         name={coffee.name}
@@ -12,9 +12,9 @@ function Home({ coffees }) {
         price={coffee.price}
         image={coffee.image_url}
         stock={coffee.stock}
-    />
-
-    ))
+        setCoffees={setCoffees}
+      />
+    ));
 
   return (
       <div id="coffee-collection">{coffeeCards}</div>

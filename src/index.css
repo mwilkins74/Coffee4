@@ -17,15 +17,17 @@ code {
     height: 100px;
 }
 
-.App {
-  text-align: center;
-}
-
+/* Logo */
 .logo {
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 50%;
+  
+}
+
+.App {
+  text-align: center;
 }
 
 .App-header {
@@ -62,13 +64,11 @@ code {
 }
 
 .addToCart {
-  background-color: #4CAF50;
-  font-size: 10px;
+  background-color: #f55ca6;
+  font-size: 18px;
   padding: 10px 24px;
   border-radius: 12px;
   transition-duration: 0.4s;
-  
-
 }
 
 /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
@@ -118,7 +118,25 @@ code {
   transform: rotateY(180deg);
 }
 
-.invalid {
+.search-bar {
+  align-items: center;
+  position: relative;
+  top: -100px;
+  border: #f55ca6
+}
+
+.search-button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+/* .invalid {
   color: red;
 }
 
@@ -145,5 +163,5 @@ code {
 .option-button {
     height:60%;
     justify-content: center;
-}
+} */
 
