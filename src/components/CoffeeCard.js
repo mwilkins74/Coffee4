@@ -4,7 +4,7 @@ function CoffeeCard({ id, name, origin, roaster, price, image, stock }) {
     // const [stock, setStock] = useState({ stock })
     
     function handleClick() {
-        alert ('Testing')
+        // alert ('Testing')
         let updatedStock = stock - 1
         fetch(`http://localhost:9292/coffees/${id}`, {
             method: "PATCH",
@@ -31,7 +31,9 @@ function CoffeeCard({ id, name, origin, roaster, price, image, stock }) {
             <h2>{origin}</h2>
             <h1>{roaster}</h1>
             <h3>${price}</h3>
-            <button className="addToCart" onClick={() => handleClick(id)} > Reserve </button>
+            <button className="addToCart" onClick={() => handleClick(id)}>
+              <strong>Reserve</strong>
+            </button>
           </div>
         </div>
       </div>
