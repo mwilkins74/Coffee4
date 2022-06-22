@@ -19,7 +19,8 @@ function CoffeeCard({
 
   // console.log(price + "coffee card");
   function handleClick() {
-    if (updatedStock != 0) {
+    if (updatedStock > 0) {
+      alert(`You Reserved a Bag of ${name}`);
       setStock(updatedStock - 1);
       fetch(`http://localhost:9292/coffees/${id}`, {
         method: "PATCH",
@@ -31,7 +32,10 @@ function CoffeeCard({
         }),
       })
         .then((r) => r.json())
-        .then((data) => setNewStock(data))
+      
+    }
+    else {
+      alert (`Ain\'t no ${name} left, sucker.`)
     }
   }
 
@@ -43,6 +47,7 @@ function CoffeeCard({
       .then((data) => coffeeData({ data, id }))
       .then(setDelete(!isDeleted));
   }
+
 
   return (
     <div className="card">
