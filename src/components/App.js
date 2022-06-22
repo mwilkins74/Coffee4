@@ -7,7 +7,10 @@ function App() {
   useEffect(() => {
     fetch("http://localhost:9292/coffees")
       .then((response) => response.json())
-      .then((data) => setCoffees(data));
+      .then((data) => {
+        setCoffees(data)
+        //console.log(data)
+      });
   }, []);
     // console.log(coffees);
 
