@@ -9,14 +9,18 @@ function CoffeeCard({
   image,
   stock,
   setCoffees,
+  coffeeData,
+  setDelete,
+  isDeleted,
 }) {
   const [newStock, setNewStock] = useState(false);
   const [updatedStock, setStock] = useState(stock);
-  const [isDeleted, setIsDeleted] = useState(false)
+  //const [isDeleted, setIsDeleted] = useState(false)
 
-  console.log(price + "coffee card");
+  // console.log(price + "coffee card");
   function handleClick() {
-    if (updatedStock != 0) {
+    if (updatedStock > 0) {
+      alert(`You Reserved a Bag of ${name}`);
       setStock(updatedStock - 1);
       fetch(`http://localhost:9292/coffees/${id}`, {
         method: "PATCH",
@@ -28,27 +32,22 @@ function CoffeeCard({
         }),
       })
         .then((r) => r.json())
-        .then((data) => {
-          if (data.stock === 0) {
-            setNewStock(!newStock);
-          }
-        });
+      
     }
     else {
-      fetch(`http://localhost:9292/coffees/${id}`, {
-        method: "DELETE",
-      })
-        .then((r) => r.json())
-        .then((data) => setCoffees(data))
-        .then(setIsDeleted(!isDeleted));
-    } 
+      alert (`Ain\'t no ${name} left, sucker.`)
+    }
   }
 
-  //   useEffect(() => {
-  //     fetch(`http://localhost:9292/coffees/${id}`, {
-  //         method: "DELETE",
-  //     })
-  // }, [newStock])
+  function handleDelete(id) {
+    fetch(`http://localhost:9292/coffees/${id}`, {
+      method: "DELETE",
+    })
+      .then((response) => response.json())
+      .then((data) => coffeeData({ data, id }))
+      .then(setDelete(!isDeleted));
+  }
+
 
   return (
     <div className="card">
@@ -64,6 +63,10 @@ function CoffeeCard({
             <h3>${price}</h3>
             <button className="addToCart" onClick={() => handleClick(id)}>
               <strong>Reserve</strong>
+            </button>
+            <br />
+            <button className="delete" onClick={() => handleDelete(id)}>
+              🗑
             </button>
           </div>
         </div>
