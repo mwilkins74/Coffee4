@@ -136,6 +136,11 @@ code {
   cursor: pointer;
 }
 
+.delete {
+  background-color: #8cd9d2;
+  border: none;
+}
+
 /* .invalid {
   color: red;
 }
