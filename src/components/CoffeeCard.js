@@ -32,7 +32,6 @@ function CoffeeCard({
         }),
       })
         .then((r) => r.json())
-      
     }
     else {
       alert (`Ain\'t no ${name} left, sucker.`)
@@ -46,6 +45,18 @@ function CoffeeCard({
       .then((response) => response.json())
       .then((data) => coffeeData({ data, id }))
       .then(setDelete(!isDeleted));
+  }
+
+  function addCoffee() {
+    fetch(`http://localhost:9292/coffees/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: `${name}`
+      }),
+    });
   }
 
 
@@ -65,8 +76,9 @@ function CoffeeCard({
               <strong>Reserve</strong>
             </button>
             <br />
+            <br />
             <button className="delete" onClick={() => handleDelete(id)}>
-              🗑
+              ❌
             </button>
           </div>
         </div>
