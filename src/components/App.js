@@ -55,7 +55,6 @@ function App() {
       .then((data) => console.log(data));
   }
 
-
   return (
     <div>
       <div className="header">
@@ -66,6 +65,7 @@ function App() {
           src="https://user-images.githubusercontent.com/102488171/174443127-2ddbd44d-c64c-4023-80e4-31436b5b64e3.png"
         />
       </div>
+
       <div className="form">
         <div className="customer-form">
           <h2>
