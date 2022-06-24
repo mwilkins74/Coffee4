@@ -126,17 +126,30 @@ code {
 
 .search-bar {
   border: 1px solid #f55ca6;
-  height: 22px;
+  height: 27px;
 }
 
 .search-button {
   background-color: #8cd9d2;
+  height: 30px;
 }
 
  /* Search - Clear Button */
 .clear {
-  height: 26.5px; 
+  height: 32px; 
   border: 1px solid #f55ca6;
 }
 
+.form{
+  float: center;
+}
 
+
+.customer-form {
+  width: 400px;
+  /* position: relative; */
+  top: 0px;
+  left: 390px;
+  color: #f55ca6;
+  /* float: center; */
+}
