@@ -13,8 +13,9 @@ function CoffeeCard({
   setDelete,
   isDeleted,
 }) {
-  const [newStock, setNewStock] = useState(false);
+  // const [newStock, setNewStock] = useState(false);
   const [updatedStock, setStock] = useState(stock);
+  const [liked, setLiked] = useState(false)
   //const [isDeleted, setIsDeleted] = useState(false)
 
   // console.log(price + "coffee card");
@@ -48,6 +49,10 @@ function CoffeeCard({
       .then(setDelete(!isDeleted));
   }
 
+  function handleLike() {
+    setLiked(!liked)
+  }
+
   return (
     <div className="card">
       <h2>{name}</h2>
@@ -69,7 +74,18 @@ function CoffeeCard({
             <button className="delete" onClick={() => handleDelete(id)}>
               ❌
             </button>
-          
+            {liked ? (
+              <button
+                className="like-btn"
+                onClick={handleLike}
+              >
+                ⬆
+              </button>
+            ) : (
+              <button className="unlike-btn" onClick={handleLike}>
+                ➖
+              </button>
+            )}
           </div>
         </div>
       </div>
