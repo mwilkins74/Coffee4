@@ -65,6 +65,7 @@ function App() {
           src="https://user-images.githubusercontent.com/102488171/174443127-2ddbd44d-c64c-4023-80e4-31436b5b64e3.png"
         />
       </div>
+      <div className="form">
       <div className="customer-form">
         <h2>Enter Info to Reserve Coffees</h2>
         <form onSubmit={createUser}>
@@ -72,7 +73,10 @@ function App() {
           <input type="text" name="email" placeholder="Email..." />
           <button type="submit">Submit</button>
         </form>
+        </div>
       </div>
+      <br />
+
       <div className="App">
         <Search search={search} onNewSearch={setSearch} />
         <Home
