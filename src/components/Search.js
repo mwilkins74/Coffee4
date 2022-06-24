@@ -10,20 +10,20 @@ function Search({ onNewSearch }) {
 
   return (
     <form onSubmit={handleSearch}>
-      <div className="search-bar">
+      <div>
         <input
-        //   class="form-control rounded"
+          className="search-bar"
           type="text"
-        //   id="search"
-          placeholder="Search..."
+          placeholder="Search Coffees..."
           value={newSearch}
           onChange={(e) => setNewSearch(e.target.value)}
         />
-        <button
-        //   className="search-button"
-          type="submit"
-        ></button>
-        <button onClick={(e) => setNewSearch("")}>clear</button>
+        <button className="search-button" type="submit">
+          ☕
+        </button>
+        <button className="clear" onClick={(e) => setNewSearch("")}>
+          <strong>Clear</strong>
+        </button>
       </div>
     </form>
   );

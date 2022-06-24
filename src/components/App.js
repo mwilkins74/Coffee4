@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Home from "./Home";
-// import Search from "./Search";
+import Search from "./Search";
 // import { Switch, Routes, Route, Link } from "react-router-dom";
 
 function App() {
   const [coffees, setCoffees] = useState([]);
   const [isDeleted, setDelete] = useState(false);
-  // const [search, setSearch] = useState("");
-  // const [cart, setCart] = useState([])
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     fetch("http://localhost:9292/coffees")
@@ -27,9 +26,9 @@ function App() {
       });
   }, [isDeleted]);
 
-  // const displayCoffees = coffees.filter((coffee) => {
-  //   return coffee.name.toLowerCase().includes(search.toLowerCase())
-  // })
+  const displayCoffees = coffees.filter((coffee) => {
+    return coffee.name.toLowerCase().includes(search.toLowerCase())
+  })
 
   function coffeeData({ id }) {
     const coffeeFilter = coffees.filter((coffee) => coffee.id !== id);
@@ -38,6 +37,7 @@ function App() {
 
   return (
     <div>
+
       <div className="header">
         <img
           className="logo"
@@ -47,15 +47,14 @@ function App() {
         />
       </div>
       <div className="App">
-        {/* <Search search={search} onNewSearch={setSearch} /> */}
+        <Search search={search} onNewSearch={setSearch} />
         <Home
-          coffees={coffees}
+          coffees={displayCoffees}
           setCoffees={setCoffees}
           coffeeData={coffeeData}
           setDelete={setDelete}
           isDeleted={isDeleted}
         />
-        
       </div>
     </div>
   );

@@ -19,7 +19,7 @@ function CoffeeCard({
 
   // console.log(price + "coffee card");
   function handleClick() {
-    if (updatedStock > 0) {
+    if (updatedStock >= 0) {
       alert(`You Reserved a Bag of ${name}`);
       setStock(updatedStock - 1);
       fetch(`http://localhost:9292/coffees/${id}`, {
@@ -47,19 +47,6 @@ function CoffeeCard({
       .then(setDelete(!isDeleted));
   }
 
-  function addCoffee() {
-    fetch(`http://localhost:9292/coffees/${id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: `${name}`
-      }),
-    });
-  }
-
-
   return (
     <div className="card">
       <h2>{name}</h2>
@@ -72,6 +59,7 @@ function CoffeeCard({
             <h2>{origin}</h2>
             <h1>{roaster}</h1>
             <h3>${price}</h3>
+            {/* <h6> Current Stock: {stock}</h6> */}
             <button className="addToCart" onClick={() => handleClick(id)}>
               <strong>Reserve</strong>
             </button>
@@ -80,6 +68,7 @@ function CoffeeCard({
             <button className="delete" onClick={() => handleDelete(id)}>
               ❌
             </button>
+          
           </div>
         </div>
       </div>

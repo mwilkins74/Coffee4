@@ -84,7 +84,7 @@ code {
 .flip-card-inner {
   position: relative;
   width: 100%;
-  height: 100%;
+  height: -50px;
   text-align: center;
   transition: transform 0.8s;
   transform-style: preserve-3d;
@@ -100,7 +100,7 @@ code {
   position: absolute;
   left: -5px;
   width: 100%;
-  height: 120%;
+  height: 100%;
   -webkit-backface-visibility: hidden; /* Safari */
   backface-visibility: hidden;
 }
@@ -118,55 +118,25 @@ code {
   transform: rotateY(180deg);
 }
 
-.search-bar {
-  align-items: center;
-  position: relative;
-  top: -100px;
-  border: #f55ca6
-}
-
-.search-button {
-  float: right;
-  padding: 6px 10px;
-  margin-top: 8px;
-  margin-right: 16px;
-  background: #ddd;
-  font-size: 17px;
-  border: none;
-  cursor: pointer;
-}
-
+/* Delete Button on Cards*/
 .delete {
   background-color: #8cd9d2;
   border: none;
 }
 
-/* .invalid {
-  color: red;
+.search-bar {
+  border: 1px solid #f55ca6;
+  height: 22px;
 }
 
-#mynavbar {
-  position: absolute;
-  right: 140px;
-  text-align: center;
+.search-button {
+  background-color: #8cd9d2;
 }
 
-#toggler {
-  position: absolute;
-  left:110px;
-  top: 220px;
-  background-color: lightgrey;
+ /* Search - Clear Button */
+.clear {
+  height: 26.5px; 
+  border: 1px solid #f55ca6;
 }
 
-#nav-link {
-  width: 60;
-  height: 60;
-  background-color: #ff0000;
-  margin-right: 10px;
-}
-
-.option-button {
-    height:60%;
-    justify-content: center;
-} */
 
