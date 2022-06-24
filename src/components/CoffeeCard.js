@@ -13,8 +13,9 @@ function CoffeeCard({
   setDelete,
   isDeleted,
 }) {
-  const [newStock, setNewStock] = useState(false);
+  // const [newStock, setNewStock] = useState(false);
   const [updatedStock, setStock] = useState(stock);
+  const [liked, setLiked] = useState(false)
   //const [isDeleted, setIsDeleted] = useState(false)
 
   // console.log(price + "coffee card");
@@ -36,6 +37,7 @@ function CoffeeCard({
     else {
       alert (`Ain\'t no ${name} left, sucker.`)
     }
+    
   }
 
   function handleDelete(id) {
@@ -45,6 +47,10 @@ function CoffeeCard({
       .then((response) => response.json())
       .then((data) => coffeeData({ data, id }))
       .then(setDelete(!isDeleted));
+  }
+
+  function handleLike() {
+    setLiked(!liked)
   }
 
   return (
@@ -68,7 +74,18 @@ function CoffeeCard({
             <button className="delete" onClick={() => handleDelete(id)}>
               ❌
             </button>
-          
+            {liked ? (
+              <button
+                className="like-btn"
+                onClick={handleLike}
+              >
+                ⬆
+              </button>
+            ) : (
+              <button className="unlike-btn" onClick={handleLike}>
+                ➖
+              </button>
+            )}
           </div>
         </div>
       </div>

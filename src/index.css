@@ -145,6 +145,7 @@ code {
 }
 
 
+
 .customer-form {
   width: 400px;
   /* position: relative; */
@@ -153,3 +154,12 @@ code {
   color: #f55ca6;
   /* float: center; */
 }
+
+.like-btn {
+  background-color: #8cd9d2
+}
+
+.unlike-btn {
+  background-color: #8cd9d2
+}
+
