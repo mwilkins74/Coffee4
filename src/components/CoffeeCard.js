@@ -36,6 +36,7 @@ function CoffeeCard({
     else {
       alert (`Ain\'t no ${name} left, sucker.`)
     }
+    
   }
 
   function handleDelete(id) {

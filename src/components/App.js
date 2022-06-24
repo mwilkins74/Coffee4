@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Home from "./Home";
 import Search from "./Search";
-// import { Switch, Routes, Route, Link } from "react-router-dom";
 
 function App() {
   const [coffees, setCoffees] = useState([]);
@@ -13,7 +12,6 @@ function App() {
       .then((response) => response.json())
       .then((data) => {
         setCoffees(data);
-        //console.log(data)
       });
   }, []);
   
@@ -35,9 +33,30 @@ function App() {
     setCoffees(coffeeFilter);
   }
 
+  function createUser(e) {
+    e.preventDefault();
+    // if statement that only accepts a username if it is rendered in an email format
+    let user = e.target.name.value;
+    let userEmail = e.target.email.value;
+
+    console.log(user, userEmail);
+
+    fetch("http://localhost:9292/customers", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: user,
+        email: userEmail,
+      }),
+    })
+      .then((r) => r.json())
+      .then((data) => console.log(data));
+  }
+
   return (
     <div>
-
       <div className="header">
         <img
           className="logo"
@@ -45,6 +64,14 @@ function App() {
           alt="Black Coffee Co. Logo"
           src="https://user-images.githubusercontent.com/102488171/174443127-2ddbd44d-c64c-4023-80e4-31436b5b64e3.png"
         />
+      </div>
+      <div className="customer-form">
+        <h2>Enter Info to Reserve Coffees</h2>
+        <form onSubmit={createUser}>
+          <input type="text" name="name" placeholder="Name..." />
+          <input type="text" name="email" placeholder="Email..." />
+          <button type="submit">Submit</button>
+        </form>
       </div>
       <div className="App">
         <Search search={search} onNewSearch={setSearch} />
